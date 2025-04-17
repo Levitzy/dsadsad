@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Susan",
+  "lastName": "Evans",
+  "fullName": "Susan Evans",
+  "email": "cazdee@quickmailbox.org",
+  "emailPassword": "",
+  "fbPassword": "130ZLb!wAxs+",
+  "gender": "Female",
+  "birthDate": "1/4/1984",
+  "creationTime": "2025-04-17T11:05:30.134Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "RuAAaAPrX3yFDqRVG8sB_PQe",
+    "fr": "09r5cWTjh5zYdNiw6..BoAOBG..AAA.0.0.BoAOB1.AWd8NB4yyYndN6CoIhvkPjm9xyI",
+    "ps_l": "1",
+    "ps_n": "1",
+    "sb": "RuAAaHuhU29k0VdRyoZSF5qT"
+  },
+  "lastUpdated": "2025-04-17T11:05:30.134Z"
+}

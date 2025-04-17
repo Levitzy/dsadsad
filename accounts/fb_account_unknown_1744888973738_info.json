@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Tyler",
+  "lastName": "Harris",
+  "fullName": "Tyler Harris",
+  "email": "loptag@mailnasty.com",
+  "emailPassword": "",
+  "fbPassword": "*vUFC@5JYg7A",
+  "gender": "Male",
+  "birthDate": "7/3/1981",
+  "creationTime": "2025-04-17T11:22:53.737Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "V-QAaJNl5gd9imC1G3A6cT4U",
+    "fr": "0bzFi5xjK2QcUMCIg..BoAORX..AAA.0.0.BoAOSH.AWe-MZVnIvKaJK3louQI0O4i-l8",
+    "sb": "V-QAaEIf8xn7IYr3xe3gSLZl"
+  },
+  "lastUpdated": "2025-04-17T11:22:53.737Z"
+}

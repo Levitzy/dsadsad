@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "userId": "0",
+  "firstName": "Tyler",
+  "lastName": "White",
+  "fullName": "Tyler White",
+  "email": "cazdee@quickmailbox.org",
+  "emailPassword": "",
+  "fbPassword": "T46ba@4^pR+u",
+  "gender": "Male",
+  "birthDate": "1/4/1978",
+  "creationTime": "2025-04-17T11:00:06.434Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "Ad8AaHTG0iXcaZ6nvBJwbr_U",
+    "fr": "0KG1g0siY8CguJ8jj..BoAN8B..AAA.0.0.BoAN8w.AWcRTnnGrWtE-8wNxBx9lIwOdhI",
+    "sb": "Ad8AaH0FTyQfWu5CfBMKFwhp"
+  },
+  "lastUpdated": "2025-04-17T11:00:06.434Z"
+}

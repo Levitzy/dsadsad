@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "userId": "0",
+  "firstName": "Virginia",
+  "lastName": "Carter",
+  "fullName": "Virginia Carter",
+  "email": "kadloc@gmailking.com",
+  "emailPassword": "",
+  "fbPassword": "Z6^&&Hz6=uD7",
+  "gender": "Female",
+  "birthDate": "2/5/1999",
+  "creationTime": "2025-04-17T11:15:50.842Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "tuIAaAaeeulCzW_jzT8JqASR",
+    "fr": "0rEfzKCrdKp6lje2V..BoAOK2..AAA.0.0.BoAOLh.AWfAEOnn1D1hTUuXvPdHoRBITko",
+    "sb": "tuIAaGEaZADHhR_rgPe-Hdy8"
+  },
+  "lastUpdated": "2025-04-17T11:15:50.842Z"
+}
