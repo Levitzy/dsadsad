@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Kathleen",
+  "lastName": "Parker",
+  "fullName": "Kathleen Parker",
+  "email": "sortoe@gmailking.com",
+  "emailPassword": "",
+  "fbPassword": "di6g^ACJ9M5Y",
+  "gender": "Female",
+  "birthDate": "12/30/1981",
+  "creationTime": "2025-04-17T03:24:12.872Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "KHQAaGTUNjhigKJB0yp2SStR",
+    "fr": "0tiY4udm9IF6LnKiK..BoAHQo..AAA.0.0.BoAHRX.AWc0RuUNku7YzAtdwZhJynWag_E",
+    "sb": "KHQAaBXSvB7geCeAWJJ3MhdT"
+  }
+}

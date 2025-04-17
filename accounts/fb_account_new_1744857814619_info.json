@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Larry",
+  "lastName": "Lewis",
+  "fullName": "Larry Lewis",
+  "email": "vogbos@gmailking.com",
+  "emailPassword": "",
+  "fbPassword": "J%vBJ!=txK5I",
+  "gender": "Male",
+  "birthDate": "10/27/1982",
+  "creationTime": "2025-04-17T02:43:34.618Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "ymoAaMIpWx5uobyjSNt8K92X",
+    "fr": "0ViYooZXaazmtoPQm..BoAGrK..AAA.0.0.BoAGrN.AWc88H-Cn49WrJNVTI1rrNBJf9s",
+    "sb": "ymoAaIKH_HAKNRKWo4pajhMb",
+    "rs": "27%7C10%7C1982%7C2%7Cvogbos%40gmailking.com%7CLarry%7CLewis%7CLarry+Lewis"
+  }
+}

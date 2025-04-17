@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Mary",
+  "lastName": "Martinez",
+  "fullName": "Mary Martinez",
+  "email": "vogbos@gmailking.com",
+  "password": "aA+3x)fD_rlF",
+  "gender": "Female",
+  "birthDate": "2/29/1984",
+  "creationTime": "2025-04-17T02:30:26.559Z",
+  "cookies": {
+    "datr": "vWcAaF_DN_-vnerhTktX6t_8"
+  }
+}

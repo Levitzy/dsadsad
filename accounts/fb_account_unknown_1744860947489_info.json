@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Donald",
+  "lastName": "Garcia",
+  "fullName": "Donald Garcia",
+  "email": "wupjes@fastmails.net",
+  "emailPassword": "",
+  "fbPassword": "e9!R=ZlYmz0y",
+  "gender": "Male",
+  "birthDate": "7/27/1991",
+  "creationTime": "2025-04-17T03:35:47.488Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "5nYAaOhHoT7BA2a41m19BTlJ",
+    "fr": "0em2NcORwZwPPY6n0..BoAHbm..AAA.0.0.BoAHcP.AWdBhSYVh9u3QVM6I-51ty0Ukmw"
+  },
+  "lastUpdated": "2025-04-17T03:35:47.488Z"
+}

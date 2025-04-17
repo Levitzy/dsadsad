@@ -1,0 +1,8 @@
+{
+    "prefix": "!",
+    "botName": "FCA Bot",
+    "adminIDs": [],
+    "logEvents": true,
+    "autoRestart": true,
+    "restartInterval": 21600000
+}

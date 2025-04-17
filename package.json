@@ -1,0 +1,36 @@
+{
+    "name": "fca-bot",
+    "version": "1.0.0",
+    "description": "A Facebook chat bot using ws3-fca library",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js"
+    },
+    "keywords": [
+        "facebook",
+        "bot",
+        "ws3-fca",
+        "messenger"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "latest",
+        "chalk": "latest",
+        "cheerio": "latest",
+        "fs-extra": "latest",
+        "https-proxy-agent": "latest",
+        "mqtt": "latest",
+        "npmlog": "latest",
+        "path": "latest",
+        "random-js": "latest",
+        "request": "latest",
+        "tunnel": "^0.0.6",
+        "websocket-stream": "latest",
+        "ws3-fca": "latest"
+    },
+    "devDependencies": {
+        "nodemon": "latest"
+    }
+}
