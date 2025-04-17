@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Brenda",
+  "lastName": "Thompson",
+  "fullName": "Brenda Thompson",
+  "email": "wagleo@gmailking.com",
+  "emailPassword": "",
+  "fbPassword": "6^*FKhCOtbwW",
+  "gender": "Female",
+  "birthDate": "3/17/1987",
+  "creationTime": "2025-04-17T07:55:00.640Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "pLMAaJnaiFzkIeFldaJZ93By",
+    "fr": "0UCSUN0cnLgBiW752..BoALOk..AAA.0.0.BoALPQ.AWebEqwYKciVZtzka0GyTvgidWg",
+    "sb": "pLMAaJsmrz2NJZYvKIRlOhTP"
+  },
+  "lastUpdated": "2025-04-17T07:55:00.640Z"
+}

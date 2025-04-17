@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "userId": "1501092823525282",
+  "firstName": "Heather",
+  "lastName": "Lopez",
+  "fullName": "Heather Lopez",
+  "email": "sigguz@emailhubs.com",
+  "emailPassword": "",
+  "fbPassword": "-mTKK8c&exP!",
+  "gender": "Female",
+  "birthDate": "11/30/1980",
+  "creationTime": "2025-04-17T07:36:01.384Z",
+  "needsVerification": false,
+  "cookies": {
+    "datr": "Mq8AaMMX9udg0PCu3qJ7aTQK",
+    "fr": "0kFN5ECAzJezQRWIj..BoAK8y..AAA.0.0.BoAK-a.AWeKB1prF2OT5KJwAA3An31ikcw",
+    "sb": "Mq8AaPo-qI-XrNCfS8RL09nJ",
+    "ps_l": "1",
+    "ps_n": "1"
+  },
+  "lastUpdated": "2025-04-17T07:36:01.384Z",
+  "verified": true,
+  "verifiedTime": "2025-04-17T07:36:59.776Z"
+}

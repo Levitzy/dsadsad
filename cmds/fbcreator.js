@@ -24,14 +24,32 @@ module.exports = {
      * @param {Array} args - Command arguments
      */
     async execute(api, event, args) {
-        // Check command variant for verification
-        if (args.length > 0 && args[0].toLowerCase() === 'verify') {
-            return this.handleVerification(api, event, args.slice(1));
+        // Check for help argument
+        if (args.length > 0 && args[0].toLowerCase() === 'help') {
+            const helpMessage = `
+📱 𝗙𝗮𝗰𝗲𝗯𝗼𝗼𝗸 𝗔𝗰𝗰𝗼𝘂𝗻𝘁 𝗖𝗿𝗲𝗮𝘁𝗼𝗿 𝗛𝗲𝗹𝗽
+
+📝 Usage:
+• Create account: fbcreator youremail@example.com
+• With email password: fbcreator youremail@example.com password
+
+⚠️ Important Notes:
+• After account creation, you'll need to manually log in and verify your account
+• Check your email for the verification code from Facebook
+• No automatic verification is available due to Facebook security measures
+
+🔑 Manual Verification:
+1. Check your email for a verification code
+2. Log in to your Facebook account with the provided credentials
+3. Enter the verification code when prompted
+`;
+            api.sendMessage(helpMessage, event.threadID, event.messageID);
+            return;
         }
 
         // Validate arguments
         if (args.length < 1) {
-            api.sendMessage("❌ Please provide a temporary email address.\nUsage: fbcreator youremail@example.com\n\nTo verify an account: fbcreator verify yourcode", event.threadID, event.messageID);
+            api.sendMessage("❌ Please provide a temporary email address.\n\n📝 Usage: fbcreator youremail@example.com\n\n⚠️ After account creation, you'll need to manually verify it by logging in and entering the code sent to your email.", event.threadID, event.messageID);
             return;
         }
 
@@ -54,7 +72,7 @@ module.exports = {
         }
 
         // Send starting message
-        api.sendMessage("📱 Starting Facebook account creation process...", event.threadID, event.messageID);
+        api.sendMessage("🔄 Starting Facebook account creation process...", event.threadID, event.messageID);
 
         try {
             // Generate random user data
@@ -63,14 +81,13 @@ module.exports = {
             // Send user data information
             const userInfoMessage = `
 👤 Account Information:
-- Name: ${userData.firstName} ${userData.lastName}
-- Gender: ${userData.gender === "1" ? "Female" : "Male"}
-- DOB: ${userData.birthMonth}/${userData.birthDay}/${userData.birthYear}
-- Email: ${email}
-- Password: ${userData.password}
+• Name: ${userData.firstName} ${userData.lastName}
+• Gender: ${userData.gender === "1" ? "👩 Female" : "👨 Male"}
+• DOB: ${userData.birthMonth}/${userData.birthDay}/${userData.birthYear}
+• Email: ${email}
+• Password: ${userData.password}
 
-⏳ Attempting to create Facebook account...
-Please wait, this might take a few minutes.
+⏳ Creating Facebook account... Please wait.
 `;
             api.sendMessage(userInfoMessage, event.threadID);
 
@@ -84,42 +101,92 @@ Please wait, this might take a few minutes.
                 // Save account information to file
                 const savedPath = saveAccountInfo(userData, email, emailPassword, accountInfo);
 
-                // Success message
+                // Success message with improved formatting
                 let successMessage = `
-✅ Facebook Account Created Successfully!
+✅ Facebook Account Created Successfully! ✅
 
-👤 Account Information:
-- Name: ${userData.firstName} ${userData.lastName}
-- Gender: ${userData.gender === "1" ? "Female" : "Male"}
-- Email: ${email}
-- Password: ${userData.password}
-${accountInfo.userId ? `- User ID: ${accountInfo.userId}` : ''}
-
-🔐 Account information saved to: ${savedPath}
+👤 𝗔𝗰𝗰𝗼𝘂𝗻𝘁 𝗜𝗻𝗳𝗼𝗿𝗺𝗮𝘁𝗶𝗼𝗻:
+• 📝 Name: ${userData.firstName} ${userData.lastName}
+• ${userData.gender === "1" ? "👩" : "👨"} Gender: ${userData.gender === "1" ? "Female" : "Male"}
+• 📧 Email: ${email}
+• 🔑 Password: ${userData.password}
+${accountInfo.userId ? `• 🆔 User ID: ${accountInfo.userId}` : ''}
 `;
 
                 if (accountInfo.needsVerification) {
                     successMessage += `
-⚠️ ACCOUNT VERIFICATION REQUIRED!
-Check your email for a verification code from Facebook, then use:
-fbcreator verify YOUR_CODE
+⚠️ 𝗠𝗔𝗡𝗨𝗔𝗟 𝗩𝗘𝗥𝗜𝗙𝗜𝗖𝗔𝗧𝗜𝗢𝗡 𝗥𝗘𝗤𝗨𝗜𝗥𝗘𝗗 ⚠️
+1️⃣ Check your email for a verification code from Facebook
+2️⃣ Log in to Facebook with your credentials
+3️⃣ Enter the verification code when prompted
 
-Your account will be locked until verified.
+⛔ Your account will be locked until manually verified.
 `;
                 } else {
-                    successMessage += "✅ Account is ready to use!";
+                    successMessage += "\n✨ Account is ready to use! Login and enjoy! ✨";
                 }
 
-                api.sendMessage(successMessage, event.threadID);
+                // Create a text file for attachment
+                try {
+                    // Create account info text content
+                    const accountInfoContent = createAccountInfoText(userData, email, accountInfo);
+
+                    // Create a text file in temp directory
+                    const tempDir = path.join(__dirname, '../temp');
+
+                    // Create temp directory if it doesn't exist
+                    if (!fs.existsSync(tempDir)) {
+                        fs.mkdirSync(tempDir, { recursive: true });
+                    }
+
+                    const timestamp = Date.now();
+                    const accountFileName = `facebook_account_${timestamp}.txt`;
+                    const accountFilePath = path.join(tempDir, accountFileName);
+
+                    // Write to file
+                    fs.writeFileSync(accountFilePath, accountInfoContent);
+
+                    // Send message first
+                    api.sendMessage(successMessage, event.threadID, (err, info) => {
+                        if (err) {
+                            console.error('Error sending success message:', err);
+                            return;
+                        }
+
+                        // Try to send file as a separate message
+                        setTimeout(() => {
+                            api.sendMessage({
+                                body: "📄 Here's your account information file:",
+                                attachment: fs.createReadStream(accountFilePath)
+                            }, event.threadID, (fileErr) => {
+                                if (fileErr) {
+                                    console.error('Error sending attachment:', fileErr);
+                                }
+
+                                // Delete the temporary file after sending or on error
+                                try {
+                                    fs.unlinkSync(accountFilePath);
+                                } catch (unlinkErr) {
+                                    console.error('Error deleting temporary file:', unlinkErr);
+                                }
+                            });
+                        }, 1000); // Wait 1 second before sending attachment
+                    });
+                } catch (fileErr) {
+                    console.error('Error creating account file:', fileErr);
+                    // Just send the message without attachment
+                    api.sendMessage(successMessage, event.threadID);
+                }
+
                 return;
             }
 
             // If all methods failed, save partial account info
-            api.sendMessage(`❌ Account creation completed with status: ${accountInfo.status || "Failed"}
+            api.sendMessage(`❌ Account creation failed: ${accountInfo.status || "Unknown error"}
 
 ${accountInfo.message || "Facebook may have rejected the registration attempt."}
 
-Account information has been saved. You may need to complete the registration manually.`, event.threadID);
+ℹ️ Try again with a different email or check if Facebook has implemented new security measures.`, event.threadID);
 
             savePartialAccountInfo(userData, email, emailPassword, accountInfo.cookies || {});
 
@@ -127,412 +194,40 @@ Account information has been saved. You may need to complete the registration ma
             console.error('Error creating Facebook account:', error);
             api.sendMessage(`❌ An error occurred while creating the account: ${error.message}`, event.threadID, event.messageID);
         }
-    },
-
-    /**
-     * Handle verification code for an account
-     * @param {Object} api - Bot API object for sending messages
-     * @param {Object} event - Event object containing threadID and messageID
-     * @param {Array} args - Command arguments [verification_code]
-     */
-    async handleVerification(api, event, args) {
-        if (args.length < 1) {
-            api.sendMessage("❌ Please provide a verification code.\nUsage: fbcreator verify yourcode", event.threadID, event.messageID);
-            return;
-        }
-
-        const verificationCode = args[0];
-
-        // Find the most recent account file with needsVerification flag
-        try {
-            const accountsDir = path.join(__dirname, '../accounts');
-
-            // Check if accounts directory exists
-            if (!fs.existsSync(accountsDir)) {
-                api.sendMessage("❌ No accounts directory found. Cannot perform verification.", event.threadID, event.messageID);
-                return;
-            }
-
-            // Get all account info files
-            const files = fs.readdirSync(accountsDir)
-                .filter(file => file.includes('_info.json'))
-                .map(file => ({
-                    name: file,
-                    path: path.join(accountsDir, file),
-                    time: fs.statSync(path.join(accountsDir, file)).mtimeMs
-                }))
-                .sort((a, b) => b.time - a.time); // Sort newest first
-
-            if (files.length === 0) {
-                api.sendMessage("❌ No account files found. Create an account first.", event.threadID, event.messageID);
-                return;
-            }
-
-            // Find the most recent account that needs verification
-            let accountToVerify = null;
-            let accountData = null;
-
-            for (const file of files) {
-                try {
-                    const data = JSON.parse(fs.readFileSync(file.path, 'utf8'));
-                    if (data.needsVerification) {
-                        accountToVerify = file;
-                        accountData = data;
-                        break;
-                    }
-                } catch (e) {
-                    continue;
-                }
-            }
-
-            if (!accountToVerify) {
-                api.sendMessage("❌ No accounts found that need verification. If you have an account that needs verification, try creating a new one first.", event.threadID, event.messageID);
-                return;
-            }
-
-            api.sendMessage(`🔄 Attempting to verify account for ${accountData.email}...`, event.threadID);
-
-            // Create session and attempt verification
-            const session = createEnhancedSession();
-
-            // Restore cookies from the account
-            if (accountData.cookies) {
-                for (const [name, value] of Object.entries(accountData.cookies)) {
-                    session.cookieJar[name] = value;
-                }
-            }
-
-            const verificationResult = await verifyFacebookAccount(session, accountData, verificationCode);
-
-            if (verificationResult.success) {
-                // Update account file
-                accountData.needsVerification = false;
-                accountData.verified = true;
-                accountData.verifiedTime = new Date().toISOString();
-                if (verificationResult.userId) {
-                    accountData.userId = verificationResult.userId;
-                }
-                if (verificationResult.cookies) {
-                    accountData.cookies = verificationResult.cookies;
-                }
-
-                fs.writeFileSync(accountToVerify.path, JSON.stringify(accountData, null, 2));
-
-                api.sendMessage(`✅ Account verified successfully!
-
-You can now log in to Facebook with:
-Email: ${accountData.email}
-Password: ${accountData.fbPassword}
-
-User ID: ${accountData.userId || "Unknown"}`, event.threadID);
-            } else {
-                api.sendMessage(`❌ Verification failed: ${verificationResult.message || "Unknown error"}
-
-Try again with a different code or verify manually by logging in to Facebook with:
-Email: ${accountData.email}
-Password: ${accountData.fbPassword}`, event.threadID);
-            }
-
-        } catch (error) {
-            console.error('Error during verification:', error);
-            api.sendMessage(`❌ An error occurred during verification: ${error.message}`, event.threadID);
-        }
     }
 };
 
 /**
- * Verify a Facebook account with a verification code
- * @param {Object} session - Session object
+ * Create account info text content
+ * @param {Object} userData - User data
+ * @param {string} email - Email address
  * @param {Object} accountInfo - Account information
- * @param {string} code - Verification code
- * @returns {Object} Verification result
+ * @returns {string} Formatted account information
  */
-async function verifyFacebookAccount(session, accountInfo, code) {
-    try {
-        // Create a client with extended timeout
-        const client = axios.create({
-            timeout: 30000,
-            maxRedirects: 10,
-            httpsAgent: new https.Agent({
-                rejectUnauthorized: false,
-                keepAlive: true
-            })
-        });
+function createAccountInfoText(userData, email, accountInfo) {
+    return `=============== FACEBOOK ACCOUNT DETAILS ===============
 
-        // First try to visit the checkpoint page
-        console.log("Visiting checkpoint page with verification code...");
+ACCOUNT INFORMATION:
+• Name: ${userData.firstName} ${userData.lastName}
+• Gender: ${userData.gender === "1" ? "Female" : "Male"}
+• Date of Birth: ${userData.birthMonth}/${userData.birthDay}/${userData.birthYear}
 
-        // Potential verification URLs
-        const verificationUrls = [
-            'https://m.facebook.com/checkpoint/',
-            'https://m.facebook.com/checkpoint/1501092823525282/',
-            'https://m.facebook.com/login/checkpoint/',
-            'https://m.facebook.com/confirmemail.php'
-        ];
+LOGIN CREDENTIALS:
+• Email: ${email}
+• Password: ${userData.password}
+${accountInfo.userId ? `• User ID: ${accountInfo.userId}` : ''}
 
-        let checkpointResponse = null;
+CREATION DATE: ${new Date().toLocaleString()}
 
-        // Try each URL until we find one that works
-        for (const url of verificationUrls) {
-            try {
-                checkpointResponse = await client.get(url, {
-                    headers: session.getHeaders(false, 'https://m.facebook.com/')
-                });
-                session.updateCookies(checkpointResponse);
+${accountInfo.needsVerification ?
+            `IMPORTANT: This account requires verification!
+1. Check your email for a verification code from Facebook
+2. Log in to Facebook with your credentials
+3. Enter the verification code when prompted
+` :
+            `The account is ready to use. You can log in to Facebook now.`}
 
-                // If we got a form, break the loop
-                if (checkpointResponse.data && checkpointResponse.data.includes('name="code"')) {
-                    console.log(`Found verification form at ${url}`);
-                    break;
-                }
-            } catch (err) {
-                console.log(`Error accessing ${url}: ${err.message}`);
-                // Continue to the next URL
-            }
-        }
-
-        // If we couldn't find a form, try a different approach
-        if (!checkpointResponse || !checkpointResponse.data || !checkpointResponse.data.includes('name="code"')) {
-            console.log("No verification form found. Trying direct submission...");
-
-            // Try direct submission to common verification endpoints
-            const directSubmissionUrls = [
-                'https://m.facebook.com/checkpoint/submit/',
-                'https://m.facebook.com/checkpoint/1501092823525282/submit/',
-                'https://m.facebook.com/confirmemail.php',
-                'https://m.facebook.com/confirm_email.php'
-            ];
-
-            for (const url of directSubmissionUrls) {
-                try {
-                    const formData = {
-                        code: code,
-                        fb_dtsg: session.fbDtsg || '',
-                        jazoest: session.jazoest || '',
-                        submit: 'Confirm'
-                    };
-
-                    const submitResponse = await client.post(url, querystring.stringify(formData), {
-                        headers: session.getHeaders(true, 'https://m.facebook.com/')
-                    });
-
-                    session.updateCookies(submitResponse);
-
-                    // Check if we got a c_user cookie or success indicators
-                    if (session.cookieJar['c_user'] ||
-                        (submitResponse.data && (
-                            submitResponse.data.includes('success') ||
-                            submitResponse.data.includes('home.php') ||
-                            submitResponse.data.includes('welcome')))) {
-                        console.log("Direct verification submission successful!");
-                        return {
-                            success: true,
-                            userId: session.cookieJar['c_user'] || extractUserIdFromUrl(submitResponse.request?.res?.responseUrl || ''),
-                            cookies: session.cookieJar
-                        };
-                    }
-                } catch (err) {
-                    console.log(`Error with ${url}: ${err.message}`);
-                    // Continue to the next URL
-                }
-            }
-
-            // If direct submission fails, try to log in with credentials
-            console.log("Direct verification failed. Trying login...");
-
-            const loginResult = await attemptLoginWithCredentials(client, session, accountInfo.email, accountInfo.fbPassword);
-            if (loginResult.success) {
-                console.log("Login successful after verification attempts!");
-                return {
-                    success: true,
-                    userId: loginResult.userId,
-                    cookies: session.cookieJar
-                };
-            }
-
-            return {
-                success: false,
-                message: "Could not find verification form or direct submission failed."
-            };
-        }
-
-        // Extract the verification form
-        const $ = cheerio.load(checkpointResponse.data);
-        const form = $('form').first();
-
-        if (!form.length) {
-            return {
-                success: false,
-                message: "No form found on verification page."
-            };
-        }
-
-        // Get form action
-        let formAction = form.attr('action') || 'https://m.facebook.com/checkpoint/submit/';
-        if (!formAction.startsWith('http')) {
-            formAction = `https://m.facebook.com${formAction}`;
-        }
-
-        // Extract form data
-        const formData = {};
-        form.find('input').each((i, el) => {
-            const name = $(el).attr('name');
-            const value = $(el).attr('value') || '';
-            if (name) {
-                formData[name] = value;
-            }
-        });
-
-        // Add code and submit
-        formData.code = code;
-        formData.submit = 'Confirm';
-
-        // Add tokens if available
-        if (session.fbDtsg) formData.fb_dtsg = session.fbDtsg;
-        if (session.lsd) formData.lsd = session.lsd;
-        if (session.jazoest) formData.jazoest = session.jazoest;
-
-        // Submit the form
-        console.log(`Submitting verification code to ${formAction}...`);
-
-        const verificationResponse = await client.post(
-            formAction,
-            querystring.stringify(formData),
-            {
-                headers: session.getHeaders(true, checkpointResponse.request?.res?.responseUrl || 'https://m.facebook.com/checkpoint/')
-            }
-        );
-
-        // Update cookies
-        session.updateCookies(verificationResponse);
-
-        // Check for success indicators
-        if (session.cookieJar['c_user']) {
-            console.log(`Verification successful! User ID: ${session.cookieJar['c_user']}`);
-            return {
-                success: true,
-                userId: session.cookieJar['c_user'],
-                cookies: session.cookieJar
-            };
-        }
-
-        // Check for redirect to successful pages
-        const finalUrl = verificationResponse.request?.res?.responseUrl || '';
-        if (finalUrl.includes('home.php') || finalUrl.includes('welcome') || finalUrl.includes('success')) {
-            console.log(`Verification successful based on redirect to ${finalUrl}`);
-            const userId = extractUserIdFromUrl(finalUrl) || session.cookieJar['c_user'];
-            return {
-                success: true,
-                userId: userId || 'unknown',
-                cookies: session.cookieJar
-            };
-        }
-
-        // Handle multi-step verification
-        if (verificationResponse.data && verificationResponse.data.includes('checkpoint')) {
-            const nextCheckpointResponse = await client.get(finalUrl, {
-                headers: session.getHeaders(false, formAction)
-            });
-
-            session.updateCookies(nextCheckpointResponse);
-
-            // Check if this is another verification screen
-            const next$ = cheerio.load(nextCheckpointResponse.data);
-            const nextForm = next$('form').first();
-
-            if (nextForm.length) {
-                const nextFormAction = nextForm.attr('action') || 'https://m.facebook.com/checkpoint/submit/';
-                const nextFormData = {};
-
-                nextForm.find('input').each((i, el) => {
-                    const name = next$(el).attr('name');
-                    const value = next$(el).attr('value') || '';
-                    if (name) {
-                        nextFormData[name] = value;
-                    }
-                });
-
-                // Look for a continue/submit button
-                const submitButton = nextForm.find('button[type="submit"], input[type="submit"]').first();
-                if (submitButton.length) {
-                    const submitName = submitButton.attr('name');
-                    const submitValue = submitButton.attr('value') || '1';
-                    if (submitName) {
-                        nextFormData[submitName] = submitValue;
-                    }
-                } else {
-                    // Add a generic submit
-                    nextFormData.submit = 'Continue';
-                }
-
-                // Add tokens if available
-                if (session.fbDtsg) nextFormData.fb_dtsg = session.fbDtsg;
-                if (session.lsd) nextFormData.lsd = session.lsd;
-                if (session.jazoest) nextFormData.jazoest = session.jazoest;
-
-                // Submit the next form
-                console.log("Continuing to next verification step...");
-
-                const nextStepResponse = await client.post(
-                    nextFormAction.startsWith('http') ? nextFormAction : `https://m.facebook.com${nextFormAction}`,
-                    querystring.stringify(nextFormData),
-                    {
-                        headers: session.getHeaders(true, finalUrl)
-                    }
-                );
-
-                session.updateCookies(nextStepResponse);
-
-                // Check for success
-                if (session.cookieJar['c_user']) {
-                    console.log(`Multi-step verification successful! User ID: ${session.cookieJar['c_user']}`);
-                    return {
-                        success: true,
-                        userId: session.cookieJar['c_user'],
-                        cookies: session.cookieJar
-                    };
-                }
-
-                // Check final URL
-                const finalStepUrl = nextStepResponse.request?.res?.responseUrl || '';
-                if (finalStepUrl.includes('home.php') || finalStepUrl.includes('welcome') || finalStepUrl.includes('success')) {
-                    console.log(`Multi-step verification successful based on redirect to ${finalStepUrl}`);
-                    const userId = extractUserIdFromUrl(finalStepUrl) || session.cookieJar['c_user'];
-                    return {
-                        success: true,
-                        userId: userId || 'unknown',
-                        cookies: session.cookieJar
-                    };
-                }
-            }
-        }
-
-        // If we get here, verification probably failed
-        console.log("Verification process didn't yield expected results. Trying login as final check...");
-
-        // Try logging in as a final check
-        const loginResult = await attemptLoginWithCredentials(client, session, accountInfo.email, accountInfo.fbPassword);
-        if (loginResult.success) {
-            console.log("Login successful after verification!");
-            return {
-                success: true,
-                userId: loginResult.userId,
-                cookies: session.cookieJar
-            };
-        }
-
-        return {
-            success: false,
-            message: "Verification code didn't work. Try another code or verify manually."
-        };
-
-    } catch (error) {
-        console.error("Error during verification:", error.message);
-        return {
-            success: false,
-            message: `Error during verification: ${error.message}`
-        };
-    }
+=============== KEEP THIS INFORMATION SECURE ===============`;
 }
 
 /**
@@ -549,7 +244,7 @@ async function createFacebookAccountMultiStage(session, userData, email, api, ev
         // Use a more reliable sequencing of methods based on success rate
 
         // Mobile approach first - seems most reliable based on logs
-        api.sendMessage(`🔄 Attempting account creation via mobile method (1/4)...`, event.threadID);
+        api.sendMessage(`🔄 Trying method 1/4: Mobile approach...`, event.threadID);
         console.log("Creating Facebook account with mobile approach...");
         const mobileResult = await createFacebookAccountOptimized(session, userData, email, 'mobile');
 
@@ -562,7 +257,7 @@ async function createFacebookAccountMultiStage(session, userData, email, api, ev
         session.resetCookies();
 
         // API approach next
-        api.sendMessage(`⚠️ Mobile method didn't succeed. Trying API method (2/4)...`, event.threadID);
+        api.sendMessage(`🔄 Trying method 2/4: API approach...`, event.threadID);
         console.log("Creating Facebook account with API approach...");
         const apiResult = await createFacebookAccountOptimized(session, userData, email, 'api');
 
@@ -575,7 +270,7 @@ async function createFacebookAccountMultiStage(session, userData, email, api, ev
         session.resetCookies();
 
         // Desktop approach
-        api.sendMessage(`⚠️ API method didn't succeed. Trying desktop method (3/4)...`, event.threadID);
+        api.sendMessage(`🔄 Trying method 3/4: Desktop approach...`, event.threadID);
         console.log("Creating Facebook account with desktop approach...");
         const desktopResult = await createFacebookAccountOptimized(session, userData, email, 'desktop');
 
@@ -588,7 +283,7 @@ async function createFacebookAccountMultiStage(session, userData, email, api, ev
         session.resetCookies();
 
         // Direct approach as last resort
-        api.sendMessage(`⚠️ Desktop method didn't succeed. Trying direct method (4/4)...`, event.threadID);
+        api.sendMessage(`🔄 Trying method 4/4: Direct approach...`, event.threadID);
         console.log("Creating Facebook account with direct approach...");
         const directResult = await createFacebookAccountOptimized(session, userData, email, 'direct');
 
@@ -2126,6 +1821,25 @@ function delay(min, max) {
  * @returns {string} Mobile user agent string
  */
 function getRandomUserAgent() {
+    try {
+        // Try to load user agents from file
+        const userAgentPath = path.join(__dirname, 'useragent', 'useragent.txt');
+
+        if (fs.existsSync(userAgentPath)) {
+            const userAgentsContent = fs.readFileSync(userAgentPath, 'utf8');
+            const userAgents = userAgentsContent.split('\n')
+                .map(line => line.trim())
+                .filter(line => line && !line.startsWith('#'));
+
+            if (userAgents.length > 0) {
+                return userAgents[Math.floor(Math.random() * userAgents.length)];
+            }
+        }
+    } catch (error) {
+        console.log("Error loading user agents from file:", error.message);
+    }
+
+    // Fall back to hardcoded list if file not found or empty
     const userAgents = [
         // iPhone
         "Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Mobile/15E148 Safari/604.1",
@@ -2153,6 +1867,26 @@ function getRandomUserAgent() {
  * @returns {string} Desktop user agent string
  */
 function getRandomDesktopUserAgent() {
+    try {
+        // Try to load user agents from file
+        const userAgentPath = path.join(__dirname, 'useragent', 'useragent.txt');
+
+        if (fs.existsSync(userAgentPath)) {
+            const userAgentsContent = fs.readFileSync(userAgentPath, 'utf8');
+            const userAgents = userAgentsContent.split('\n')
+                .map(line => line.trim())
+                .filter(line => line && !line.startsWith('#') &&
+                    (line.includes('Windows') || line.includes('Macintosh') || line.includes('Linux') && !line.includes('Mobile')));
+
+            if (userAgents.length > 0) {
+                return userAgents[Math.floor(Math.random() * userAgents.length)];
+            }
+        }
+    } catch (error) {
+        console.log("Error loading desktop user agents from file:", error.message);
+    }
+
+    // Fall back to hardcoded list if file not found or empty
     const userAgents = [
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
