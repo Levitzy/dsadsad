@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Ronald",
+  "lastName": "Parker",
+  "fullName": "Ronald Parker",
+  "email": "sossiv@gmailking.com",
+  "emailPassword": "",
+  "fbPassword": "H1N_atTEf$mb",
+  "gender": "Male",
+  "birthDate": "6/24/1976",
+  "creationTime": "2025-04-17T09:01:40.132Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "PsMAaLL3qXfOpmDvfYKyy1oD",
+    "fr": "0Cd2slb4yCLq4Szhn..BoAMM-..AAA.0.0.BoAMNw.AWfFyr06sIkD9-Qjx72irGbkER4",
+    "sb": "PsMAaEAhb3yxySq6J3xmN7zQ"
+  },
+  "lastUpdated": "2025-04-17T09:01:40.132Z"
+}

@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Steven",
+  "lastName": "King",
+  "fullName": "Steven King",
+  "email": "zelwej@fastmails.net",
+  "emailPassword": "",
+  "fbPassword": "nJ9baw&2whb%",
+  "gender": "Male",
+  "birthDate": "9/2/1986",
+  "creationTime": "2025-04-17T08:54:22.768Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "lcEAaMCqYQJQVC1awfyuOQyu",
+    "fr": "0zyJXsZ1oL3gldBqN..BoAMGV..AAA.0.0.BoAMG1.AWdhOqBS2FWJIJog7wLJbg1i4FY",
+    "sb": "lcEAaDsaqmCg_X79zZcfpg7d",
+    "rs": "2%7C9%7C1986%7C2%7Czelwej%40fastmails.net"
+  },
+  "lastUpdated": "2025-04-17T08:54:22.768Z"
+}

@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Daniel",
+  "lastName": "Rodriguez",
+  "fullName": "Daniel Rodriguez",
+  "email": "soamum@unrealapi.com",
+  "emailPassword": "",
+  "fbPassword": "&zniS17od=8%",
+  "gender": "Male",
+  "birthDate": "9/10/1996",
+  "creationTime": "2025-04-17T08:52:13.745Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "FMEAaNopIqydsvhYPsWs4Sws",
+    "fr": "0ac0Kt6MejyVEGd6j..BoAMEU..AAA.0.0.BoAME1.AWdiA_r2HbYFuv55ZEfoH9-B0Vg",
+    "sb": "FMEAaKsfAlVl2F4LB2MlwOwx",
+    "rs": "10%7C9%7C1996%7C2%7C%7CDaniel%7CRodriguez%7CDaniel+Rodriguez"
+  },
+  "lastUpdated": "2025-04-17T08:52:13.745Z"
+}
