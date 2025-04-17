@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Ryan",
+  "lastName": "Clark",
+  "fullName": "Ryan Clark",
+  "email": "frequent.bobolink.fijp@letterprotect.com",
+  "emailPassword": "",
+  "fbPassword": "EML4zb+&=HfF",
+  "gender": "Male",
+  "birthDate": "11/26/1995",
+  "creationTime": "2025-04-17T10:40:09.447Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "WdoAaEyFTT08Zy4HwvcO9NL2",
+    "fr": "09Reku5oMkwzraqvs..BoANpZ..AAA.0.0.BoANpk.AWcmJDb_mWVLP6XuQK3kLM7KXEc",
+    "sb": "WdoAaNFnzob_tHI07-ij49tZ",
+    "rs": "26%7C11%7C1995%7C2%7Cfrequent.bobolink.fijp%40letterprotect.com%7CRyan%7CClark%7CRyan+Clark"
+  },
+  "lastUpdated": "2025-04-17T10:40:09.447Z"
+}

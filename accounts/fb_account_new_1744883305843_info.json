@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Christine",
+  "lastName": "Sanchez",
+  "fullName": "Christine Sanchez",
+  "email": "koirum@unrealapi.com",
+  "emailPassword": "",
+  "fbPassword": "Uu@Xb3nqjp",
+  "gender": "Female",
+  "birthDate": "10/23/2000",
+  "creationTime": "2025-04-17T09:48:25.842Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "Mc4AaExYfubyOVX9MC8TRJRY",
+    "fr": "0DJzjvyxWthsE4jVY..BoAM4x..AAA.0.0.BoAM4x.AWeVqO5ulKfcyg4jnaf5IBIoyv0",
+    "sb": "J84AaBmxgRBJ9nym2fCmrkMR"
+  },
+  "lastUpdated": "2025-04-17T09:48:25.842Z"
+}

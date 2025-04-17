@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Larry",
+  "lastName": "Phillips",
+  "fullName": "Larry Phillips",
+  "email": "urgent.jackal.fmja@letterprotect.com",
+  "emailPassword": "",
+  "fbPassword": "y3msJws@FO8$9E",
+  "gender": "Male",
+  "birthDate": "1/12/2002",
+  "creationTime": "2025-04-17T09:51:17.773Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "4s4AaAuDVv9SlhUNOKhs0kA5",
+    "fr": "07HSYfc1GAA1ynVoE..BoAM7i..AAA.0.0.BoAM7i.AWc_reLIc6PwaTotF-HoQGcILmA",
+    "sb": "0c4AaMJ1uLpfahzRdK-2pciz"
+  },
+  "lastUpdated": "2025-04-17T09:51:17.773Z"
+}

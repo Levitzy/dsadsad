@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "userId": "0",
+  "firstName": "Margaret",
+  "lastName": "Young",
+  "fullName": "Margaret Young",
+  "email": "unexpected.urial.ykif@letterprotect.com",
+  "emailPassword": "",
+  "fbPassword": "NjIa!H%7t@UH",
+  "gender": "Female",
+  "birthDate": "7/17/1977",
+  "creationTime": "2025-04-17T10:50:01.482Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "ntwAaF8LOsfovRyefaljPrMS",
+    "fr": "0bacDyagOArfa46he..BoANye..AAA.0.0.BoANzV.AWe0LeeIJ4rlqOk84uNYDyi2rwA",
+    "sb": "ntwAaOsg7MEWSRUgFQWjqtUT"
+  },
+  "lastUpdated": "2025-04-17T10:50:01.482Z"
+}

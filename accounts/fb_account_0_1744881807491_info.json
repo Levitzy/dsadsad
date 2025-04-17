@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "userId": "0",
+  "firstName": "James",
+  "lastName": "Wright",
+  "fullName": "James Wright",
+  "email": "mohzop@kissmails.com",
+  "emailPassword": "",
+  "fbPassword": "!dm9BOoj6*A9",
+  "gender": "Male",
+  "birthDate": "4/15/1981",
+  "creationTime": "2025-04-17T09:23:27.491Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "TMgAaP99XoxdL2rJzatUC01_",
+    "fr": "02LggSrU19abqMvEj..BoAMhM..AAA.0.0.BoAMiL.AWcsPgVivzFjf-1sejcCVrW0C7A",
+    "sb": "TMgAaB1Q8CnJ8-KA-qxzdw8i"
+  },
+  "lastUpdated": "2025-04-17T09:23:27.491Z"
+}

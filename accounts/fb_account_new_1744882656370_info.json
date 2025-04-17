@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Larry",
+  "lastName": "Walker",
+  "fullName": "Larry Walker",
+  "email": "vojheu@Voidex.org",
+  "emailPassword": "",
+  "fbPassword": "u34uRxrT7Ze_",
+  "gender": "Male",
+  "birthDate": "6/21/1999",
+  "creationTime": "2025-04-17T09:37:36.369Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "2ssAaLDt68_gpPMzCZntjGDZ",
+    "fr": "0TYhnyEFPxc96q7uM..BoAMva..AAA.0.0.BoAMva.AWfSx2Wpy-m-Zt9kZv9Z0jFY1kA",
+    "sb": "2ssAaGkUAQOr0opHq1rgLsaE"
+  },
+  "lastUpdated": "2025-04-17T09:37:36.369Z"
+}

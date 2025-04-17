@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Edward",
+  "lastName": "Allen",
+  "fullName": "Edward Allen",
+  "email": "urgent.jackal.fmja@letterprotect.com",
+  "emailPassword": "",
+  "fbPassword": "2C4rxgbW-cM",
+  "gender": "Male",
+  "birthDate": "6/26/1996",
+  "creationTime": "2025-04-17T10:31:52.621Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "tNcAaAO3oPyCDcyDqENvAnFq",
+    "fr": "0hxRO3wrWeZwbXxNf..BoANe0..AAA.0.0.BoANe0.AWd7NYQdRBo6gCDRpUFAMGmWLJs",
+    "sb": "tNcAaOiMAPmm8Wd5dmqcOuyU",
+    "ps_l": "1",
+    "ps_n": "1",
+    "rs": "26%7C6%7C1996%7C2%7Curgent.jackal.fmja%40letterprotect.com%7CEdward%7CAllen%7CEdward+Allen"
+  },
+  "lastUpdated": "2025-04-17T10:31:52.621Z"
+}
