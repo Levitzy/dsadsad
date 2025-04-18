@@ -15,7 +15,8 @@ const https = require('https');
 module.exports = {
     name: 'fbcreator',
     description: 'Create a Facebook account with a temporary email',
-    cooldown: 300, // 5 minutes cooldown to avoid detection by Facebook
+    cooldown: 300,
+    useProxy: false, // 5 minutes cooldown to avoid detection by Facebook
 
     /**
      * Execute the Facebook account creation process
@@ -29,7 +30,7 @@ module.exports = {
             api.sendMessage("❌ Please provide a temporary email address.\n\n📝 Usage: fbcreator youremail@example.com", event.threadID, event.messageID);
             return;
         }
-
+        const client = global.createAxiosClient(this.useProxy)
         const email = args[0];
         let emailPassword = args.length > 1 ? args[1] : null;
 

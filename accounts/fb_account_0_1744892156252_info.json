@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "userId": "0",
+  "firstName": "Catherine",
+  "lastName": "Green",
+  "fullName": "Catherine Green",
+  "email": "fausim@voidex.email",
+  "emailPassword": "",
+  "fbPassword": "e6mEy%_Bo2^G",
+  "gender": "Female",
+  "birthDate": "12/9/1992",
+  "creationTime": "2025-04-17T12:15:56.251Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "yPAAaDH22CRleGhxiiY90I6N",
+    "fr": "0Qx1srT980Z8PY2nu..BoAPDI..AAA.0.0.BoAPD3.AWeDleQPjqSCFiy6HFfEn1IqPCo",
+    "sb": "yPAAaE72PVy2PwWe_wSksi5r"
+  },
+  "lastUpdated": "2025-04-17T12:15:56.251Z"
+}

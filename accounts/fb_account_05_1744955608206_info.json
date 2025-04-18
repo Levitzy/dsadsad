@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "userId": "05",
+  "firstName": "Katherine",
+  "lastName": "Wilson",
+  "fullName": "Katherine Wilson",
+  "email": "desperate.starfish.cmul@letterprotect.com",
+  "emailPassword": "",
+  "fbPassword": "6t$osLJpN#M=",
+  "gender": "Female",
+  "birthDate": "9/3/1994",
+  "creationTime": "2025-04-18T05:53:28.205Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "ougBaNAYq8bv-RCefMOG4APj",
+    "fr": "043CA3xOeqLEIGL5j..BoAeii..AAA.0.0.BoAejQ.AWe8O4yR_fuwnHvIcuaDYUIxe0A",
+    "ps_l": "1",
+    "ps_n": "1",
+    "sb": "ougBaA8qV6m1qVxVMoqT1YLt"
+  },
+  "lastUpdated": "2025-04-18T05:53:28.205Z"
+}

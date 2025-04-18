@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Sharon",
+  "lastName": "Adams",
+  "fullName": "Sharon Adams",
+  "email": "sekcav@emailfor24.com",
+  "emailPassword": "",
+  "fbPassword": "R7df*$0k+1nH",
+  "gender": "Female",
+  "birthDate": "1/10/1977",
+  "creationTime": "2025-04-18T06:00:25.059Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "cuoBaIumch9vI9ZAaXeNSqnA",
+    "fr": "0maEK0kbryj6q9asc..BoAepy..AAA.0.0.BoAepy.AWffK0oPv1W9diwxqbd8VZJm58c",
+    "sb": "cuoBaH-3gMAU-RfjF0gy7wXB"
+  },
+  "lastUpdated": "2025-04-18T06:00:25.059Z"
+}

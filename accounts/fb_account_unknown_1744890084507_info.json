@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Susan",
+  "lastName": "Walker",
+  "fullName": "Susan Walker",
+  "email": "zojleo@mailnasty.com",
+  "emailPassword": "",
+  "fbPassword": "$6V+Nlr-9s5&",
+  "gender": "Female",
+  "birthDate": "2/15/1993",
+  "creationTime": "2025-04-17T11:41:24.506Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "legAaB70lGNTGwNJF9KQ7TS3",
+    "fr": "0CTbN1ys4WSwpTs1X..BoAOiV..AAA.0.0.BoAOjf.AWfP57kgf23ENl2Bkd3r6vyrUJs",
+    "sb": "legAaN627dfRzUzr2HZIIY-d",
+    "ps_l": "1",
+    "ps_n": "1"
+  },
+  "lastUpdated": "2025-04-17T11:41:24.506Z",
+  "note": "For best results, only log in using the Facebook mobile app."
+}

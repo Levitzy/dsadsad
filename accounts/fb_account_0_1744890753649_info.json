@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "userId": "0",
+  "firstName": "Cynthia",
+  "lastName": "Sanchez",
+  "fullName": "Cynthia Sanchez",
+  "email": "revtua@voidex.email",
+  "emailPassword": "",
+  "fbPassword": "cO3yY(@7ST(7",
+  "gender": "Female",
+  "birthDate": "1/25/1990",
+  "creationTime": "2025-04-17T11:52:33.648Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "F-sAaLIhvSaAK3DYyUHe881Q",
+    "fr": "026kmHIbwX1wakMjR..BoAOsP..AAA.0.0.BoAOuA.AWcRG7tQvdrwqn04uddKDmWbmJ4",
+    "sb": "D-sAaA5bHfPNULLEsjk57tSl",
+    "rs": "25%7C1%7C1990%7C1%7Crevtua%40voidex.email%7CCynthia%7CSanchez%7CCynthia+Sanchez",
+    "ps_l": "1",
+    "ps_n": "1"
+  },
+  "lastUpdated": "2025-04-17T11:52:33.648Z",
+  "crossCompatible": false,
+  "deviceInfo": {
+    "userAgent": "Mozilla/5.0 (Linux; Android 13; Pixel 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Mobile Safari/537.36",
+    "screenResolution": "476x826",
+    "deviceId": "",
+    "timezone": "240"
+  }
+}

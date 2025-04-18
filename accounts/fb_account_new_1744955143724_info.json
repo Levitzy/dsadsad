@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Jason",
+  "lastName": "Baker",
+  "fullName": "Jason Baker",
+  "email": "wexid42576@cotigz.com",
+  "emailPassword": "",
+  "fbPassword": "_NqR05WfjkeJ",
+  "gender": "Male",
+  "birthDate": "9/23/1982",
+  "creationTime": "2025-04-18T05:45:43.723Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "5eYBaPevKsjKU_qLi5INShkR",
+    "fr": "0MXoe9t3k2Z4jpRxG..BoAebl..AAA.0.0.BoAebl.AWcBEFccZZ-C0AaLoDWefEw-d8Q",
+    "sb": "4eYBaFRdTmsbY7PLCzxqA4cE",
+    "rs": "23%7C9%7C1982%7C2%7Cwexid42576%40cotigz.com%7CJason%7CBaker%7CJason+Baker"
+  },
+  "lastUpdated": "2025-04-18T05:45:43.724Z"
+}

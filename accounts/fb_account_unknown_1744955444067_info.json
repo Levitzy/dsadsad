@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "userId": "unknown",
+  "firstName": "Lisa",
+  "lastName": "Torres",
+  "fullName": "Lisa Torres",
+  "email": "inclined.flea.uxst@letterprotect.com",
+  "emailPassword": "",
+  "fbPassword": "pl1mve)Ilo%2",
+  "gender": "Female",
+  "birthDate": "8/18/1992",
+  "creationTime": "2025-04-18T05:50:44.066Z",
+  "needsVerification": true,
+  "cookies": {
+    "datr": "BegBaMevjpvWtE1N2BIK_THs",
+    "fr": "0ST6pQfTM6EmLyCtR..BoAegF..AAA.0.0.BoAegu.AWdwU9KVeCPrtQrp51EeyV2HA_4",
+    "sb": "BegBaNAls0ggaKc6MvNKAN90"
+  },
+  "lastUpdated": "2025-04-18T05:50:44.066Z"
+}
